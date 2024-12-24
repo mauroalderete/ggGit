@@ -1,0 +1,16 @@
+name: Unit Tests
+
+on:
+  pull_request:
+    branches: ['main']
+    types: [opened, reopened, synchronize]
+
+jobs:
+  unit-tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
