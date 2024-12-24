@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git pull --all --prune "$@"
+git fetch --tags --force
