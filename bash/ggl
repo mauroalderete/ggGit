@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $(dirname $0)/ggl.sh
+source $(dirname $0)/_utils.sh
 
 print_usage() {
     print_text "NAME"
@@ -8,6 +8,9 @@ print_usage() {
     print_text ""
     print_text "SYNOPSIS"
     print_text "    ggl [<options>] [--] [<pathspec>...]"
+    print_text ""
+    print_text "DESCRIPTION"
+    print_text "    This command shows git log."
     print_text ""
     print_text "OPTIONS"
     print_text "    [<options>] [--] [<pathspec>...]"
@@ -19,3 +22,19 @@ print_usage() {
 main() {
     git log --oneline --graph --all --decorate "$@"
 }
+
+if [ "$#" -eq 0 ]; then
+    main
+    exit
+fi
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -h | --help )           print_usage
+                                exit
+                                ;;
+        * )                     main "$@"
+                                exit 1
+    esac
+    shift
+done

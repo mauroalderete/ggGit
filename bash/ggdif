@@ -4,21 +4,23 @@ source $(dirname $0)/_utils.sh
 
 print_usage() {
     print_text "NAME"
-    print_text "    ggv - Show the latest tag"
-    print_text ""
-    print_text "DESCRIPTION"
-    print_text "    This command shows the latest tag."
+    print_text "    ggdif - Show changes between commits, commit and working tree, etc"
     print_text ""
     print_text "SYNOPSIS"
-    print_text "    ggv"
+    print_text "    ggdif [<options>] [--] [<pathspec>...]"
+    print_text ""
+    print_text "DESCRIPTION"
+    print_text "    This command shows changes between commits, commit and working tree, etc."
     print_text ""
     print_text "OPTIONS"
+    print_text "    [<options>] [--] [<pathspec>...]"
+    print_text "        Same as git diff"
     print_text "    -h, --help"
     print_text "        Display this help message"
 }
 
 main() {
-    git describe --tags --abbrev=0
+    git diff --color-words "$@"
 }
 
 if [ "$#" -eq 0 ]; then
@@ -31,7 +33,7 @@ while [ "$1" != "" ]; do
         -h | --help )           print_usage
                                 exit
                                 ;;
-        * )                     print_invalid_argument
+        * )                     main "$@"
                                 exit 1
     esac
     shift

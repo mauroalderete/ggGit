@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $(dirname $0)/ggmerge.sh
+source $(dirname $0)/_utils.sh
 
 print_usage() {
     print_text "NAME"
@@ -10,6 +10,9 @@ print_usage() {
     print_text "    ggmerge [<options>] [<commit>...]"
     print_text "    ggmerge -a | --abort"
     print_text "    ggmerge -c | --continue"
+    print_text ""
+    print_text "DESCRIPTION"
+    print_text "    This command merges branches without fast-forward."
     print_text ""
     print_text "OPTIONS"
     print_text "    [<options>] [<commit>...]"

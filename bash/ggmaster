@@ -10,7 +10,11 @@ print_usage() {
     print_text "    ggmaster"
     print_text ""
     print_text "DESCRIPTION"
-    print_text "    Checkout master branch"
+    print_text "    This command checks out the master branch."
+    print_text ""
+    print_text "OPTIONS"
+    print_text "    -h, --help"
+    print_text "        Display this help message"
 }
 
 main() {
